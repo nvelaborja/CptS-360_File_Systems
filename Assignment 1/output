@@ -1,0 +1,151 @@
+enter main
+&argc=ffb743b0 argv=ffb74444 env=ffb74458
+&a=ffb74394 &b=ffb74398 &c=ffb7439c
+enter A
+Addresses of d, e, & f:
+&d=ffb74364 &e=ffb74368 &f=ffb7436c
+enter B
+Addresses of g, h and i: 
+&g=ffb74334 &h=ffb74338 &i=ffb7433c
+enter C
+Addresses of u, v, w, i, and p: 
+&u=ffb742f8 &v=ffb742fc &w=ffb74300 &i=ffb74304 &p=ffb7432c
+p = ffb74308
+Stack Frame Link List:
+Frame Link List (0) (FP) = ffb74318
+Frame Link List (1): ffb74348
+Frame Link List (2): ffb74378
+Frame Link List (3): ffb743a8
+Frame Link List (4):        0
+Stack Contents:
+Stack[0]:	       a	@	ffb742f8
+Stack[1]:	       b	@	ffb742fc
+Stack[2]:	       c	@	ffb74300
+Stack[3]:	       d	@	ffb74304
+Stack[4]:	ffb74308	@	ffb74308
+Stack[5]:	       5	@	ffb7430c
+Stack[6]:	f7747000	@	ffb74310
+Stack[7]:	       0	@	ffb74314
+Stack[8]:	ffb74348	@	ffb74318
+Stack[9]:	 80485a3	@	ffb7431c
+Stack[10]:	       1	@	ffb74320
+Stack[11]:	       2	@	ffb74324
+Stack[12]:	ffb74338	@	ffb74328
+Stack[13]:	ffb7433c	@	ffb7432c
+Stack[14]:	f7747ac0	@	ffb74330
+Stack[15]:	       1	@	ffb74334
+Stack[16]:	       2	@	ffb74338
+Stack[17]:	       3	@	ffb7433c
+Stack[18]:	       0	@	ffb74340
+Stack[19]:	       0	@	ffb74344
+Stack[20]:	ffb74378	@	ffb74348
+Stack[21]:	 804853b	@	ffb7434c
+Stack[22]:	       7	@	ffb74350
+Stack[23]:	       8	@	ffb74354
+Stack[24]:	ffb74368	@	ffb74358
+Stack[25]:	ffb7436c	@	ffb7435c
+Stack[26]:	f7747ac0	@	ffb74360
+Stack[27]:	       7	@	ffb74364
+Stack[28]:	       8	@	ffb74368
+Stack[29]:	       9	@	ffb7436c
+Stack[30]:	ffb743b0	@	ffb74370
+Stack[31]:	f7792938	@	ffb74374
+Stack[32]:	ffb743a8	@	ffb74378
+Stack[33]:	 80484d3	@	ffb7437c
+Stack[34]:	       4	@	ffb74380
+Stack[35]:	       5	@	ffb74384
+Stack[36]:	ffb74398	@	ffb74388
+Stack[37]:	ffb7439c	@	ffb7438c
+Stack[38]:	f77473c4	@	ffb74390
+Stack[39]:	       4	@	ffb74394
+Stack[40]:	       5	@	ffb74398
+Stack[41]:	       6	@	ffb7439c
+Stack[42]:	 8048700	@	ffb743a0
+Stack[43]:	       0	@	ffb743a4
+Stack[44]:	       0	@	ffb743a8
+Stack[45]:	f75b6a83	@	ffb743ac
+Stack[46]:	       4	@	ffb743b0
+Stack[47]:	ffb74444	@	ffb743b4
+Stack[48]:	ffb74458	@	ffb743b8
+Stack[49]:	f777fcea	@	ffb743bc
+Stack[50]:	       4	@	ffb743c0
+Stack[51]:	ffb74444	@	ffb743c4
+Stack[52]:	ffb743e4	@	ffb743c8
+Stack[53]:	 804a018	@	ffb743cc
+Stack[54]:	 804822c	@	ffb743d0
+Stack[55]:	f7747000	@	ffb743d4
+Stack[56]:	       0	@	ffb743d8
+Stack[57]:	       0	@	ffb743dc
+Stack[58]:	       0	@	ffb743e0
+Stack[59]:	1cd2caf6	@	ffb743e4
+Stack[60]:	c4812ee7	@	ffb743e8
+Stack[61]:	       0	@	ffb743ec
+Stack[62]:	       0	@	ffb743f0
+Stack[63]:	       0	@	ffb743f4
+Stack[64]:	       4	@	ffb743f8
+Stack[65]:	 8048350	@	ffb743fc
+Stack[66]:	       0	@	ffb74400
+Stack[67]:	f7785500	@	ffb74404
+Stack[68]:	f75b6999	@	ffb74408
+Stack[69]:	f7792000	@	ffb7440c
+Stack[70]:	       4	@	ffb74410
+Stack[71]:	 8048350	@	ffb74414
+Stack[72]:	       0	@	ffb74418
+Stack[73]:	 8048371	@	ffb7441c
+Stack[74]:	 804844d	@	ffb74420
+Stack[75]:	       4	@	ffb74424
+Stack[76]:	ffb74444	@	ffb74428
+Stack[77]:	 8048700	@	ffb7442c
+Stack[78]:	 8048770	@	ffb74430
+Stack[79]:	f7780180	@	ffb74434
+Stack[80]:	ffb7443c	@	ffb74438
+Stack[81]:	      1c	@	ffb7443c
+Stack[82]:	       4	@	ffb74440
+Stack[83]:	ffb763ff	@	ffb74444
+Stack[84]:	ffb76407	@	ffb74448
+Stack[85]:	ffb7640b	@	ffb7444c
+Stack[86]:	ffb7640f	@	ffb74450
+Stack[87]:	       0	@	ffb74454
+Stack[88]:	ffb76415	@	ffb74458
+Stack[89]:	ffb76420	@	ffb7445c
+Stack[90]:	ffb76432	@	ffb74460
+Stack[91]:	ffb76445	@	ffb74464
+Stack[92]:	ffb7645b	@	ffb74468
+Stack[93]:	ffb76490	@	ffb7446c
+Stack[94]:	ffb764a1	@	ffb74470
+Stack[95]:	ffb764b1	@	ffb74474
+Stack[96]:	ffb764bc	@	ffb74478
+Stack[97]:	ffb7650c	@	ffb7447c
+Stack[98]:	ffb76524	@	ffb74480
+Stack[99]:	ffb76535	@	ffb74484
+Stack[100]:	ffb76569	@	ffb74488
+Stack[101]:	ffb7658a	@	ffb7448c
+Stack[102]:	ffb76594	@	ffb74490
+Stack[103]:	ffb765a8	@	ffb74494
+Stack[104]:	ffb76ac9	@	ffb74498
+Stack[105]:	ffb76af9	@	ffb7449c
+Stack[106]:	ffb76b2e	@	ffb744a0
+Stack[107]:	ffb76b3e	@	ffb744a4
+Stack[108]:	ffb76bc4	@	ffb744a8
+Stack[109]:	ffb76bf3	@	ffb744ac
+Stack[110]:	ffb76c07	@	ffb744b0
+Stack[111]:	ffb76c20	@	ffb744b4
+Stack[112]:	ffb76c7e	@	ffb744b8
+Stack[113]:	ffb76c99	@	ffb744bc
+Stack[114]:	ffb76cc7	@	ffb744c0
+Stack[115]:	ffb76cd8	@	ffb744c4
+Stack[116]:	ffb76d10	@	ffb744c8
+Stack[117]:	ffb76d24	@	ffb744cc
+Stack[118]:	ffb76d3f	@	ffb744d0
+Stack[119]:	ffb76d56	@	ffb744d4
+Stack[120]:	ffb76d61	@	ffb744d8
+Stack[121]:	ffb76d70	@	ffb744dc
+Stack[122]:	ffb76d78	@	ffb744e0
+Stack[123]:	ffb76da4	@	ffb744e4
+Stack[124]:	ffb76db1	@	ffb744e8
+Stack[125]:	ffb76dce	@	ffb744ec
+Stack[126]:	ffb76e30	@	ffb744f0
+Stack[127]:	ffb76e91	@	ffb744f4
+exit B
+exit A
+exit main

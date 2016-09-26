@@ -1,0 +1,11 @@
+Type	Path
+-----  -----------------
+D	/
+D	/a/
+F	/a/one/
+D	/b/
+F	/b/two/
+D	/c/
+F	/c/three/
+D	/d/
+F	/d/four/

@@ -1,0 +1,152 @@
+enter main
+&argc=ffe8d4f0 argv=ffe8d584 env=ffe8d598
+&a=ffe8d4d4 &b=ffe8d4d8 &c=ffe8d4dc
+enter A
+Addresses of d, e, & f:
+&d=ffe8d4a4 &e=ffe8d4a8 &f=ffe8d4ac
+enter B
+Addresses of g, h and i: 
+&g=ffe8d474 &h=ffe8d478 &i=ffe8d47c
+enter C
+Addresses of u, v, w, i, and p: 
+&u=ffe8d438 &v=ffe8d43c &w=ffe8d440 &i=ffe8d444 &p=ffe8d46c
+p = ffe8d448
+Stack Frame Link List:
+Frame Link List (0) (FP) = ffe8d458
+Frame Link List (1): ffe8d488
+Frame Link List (2): ffe8d4b8
+Frame Link List (3): ffe8d4e8
+Frame Link List (4):        0
+Stack Contents:
+Stack Index	Stack Value		 Address
+Stack[0]:	       a	@	ffe8d438
+Stack[1]:	       b	@	ffe8d43c
+Stack[2]:	       c	@	ffe8d440
+Stack[3]:	       d	@	ffe8d444
+Stack[4]:	ffe8d448	@	ffe8d448
+Stack[5]:	       5	@	ffe8d44c
+Stack[6]:	f76e8000	@	ffe8d450
+Stack[7]:	       0	@	ffe8d454
+Stack[8]:	ffe8d488	@	ffe8d458
+Stack[9]:	 80485a3	@	ffe8d45c
+Stack[10]:	       7	@	ffe8d460
+Stack[11]:	       8	@	ffe8d464
+Stack[12]:	ffe8d478	@	ffe8d468
+Stack[13]:	ffe8d47c	@	ffe8d46c
+Stack[14]:	f76e8ac0	@	ffe8d470
+Stack[15]:	       7	@	ffe8d474
+Stack[16]:	       8	@	ffe8d478
+Stack[17]:	       9	@	ffe8d47c
+Stack[18]:	       0	@	ffe8d480
+Stack[19]:	       0	@	ffe8d484
+Stack[20]:	ffe8d4b8	@	ffe8d488
+Stack[21]:	 804853b	@	ffe8d48c
+Stack[22]:	       4	@	ffe8d490
+Stack[23]:	       5	@	ffe8d494
+Stack[24]:	ffe8d4a8	@	ffe8d498
+Stack[25]:	ffe8d4ac	@	ffe8d49c
+Stack[26]:	f76e8ac0	@	ffe8d4a0
+Stack[27]:	       4	@	ffe8d4a4
+Stack[28]:	       5	@	ffe8d4a8
+Stack[29]:	       6	@	ffe8d4ac
+Stack[30]:	ffe8d4f0	@	ffe8d4b0
+Stack[31]:	f7733938	@	ffe8d4b4
+Stack[32]:	ffe8d4e8	@	ffe8d4b8
+Stack[33]:	 80484d3	@	ffe8d4bc
+Stack[34]:	       1	@	ffe8d4c0
+Stack[35]:	       2	@	ffe8d4c4
+Stack[36]:	ffe8d4d8	@	ffe8d4c8
+Stack[37]:	ffe8d4dc	@	ffe8d4cc
+Stack[38]:	f76e83c4	@	ffe8d4d0
+Stack[39]:	       1	@	ffe8d4d4
+Stack[40]:	       2	@	ffe8d4d8
+Stack[41]:	       3	@	ffe8d4dc
+Stack[42]:	 8048700	@	ffe8d4e0
+Stack[43]:	       0	@	ffe8d4e4
+Stack[44]:	       0	@	ffe8d4e8
+Stack[45]:	f7557a83	@	ffe8d4ec
+Stack[46]:	       4	@	ffe8d4f0
+Stack[47]:	ffe8d584	@	ffe8d4f4
+Stack[48]:	ffe8d598	@	ffe8d4f8
+Stack[49]:	f7720cea	@	ffe8d4fc
+Stack[50]:	       4	@	ffe8d500
+Stack[51]:	ffe8d584	@	ffe8d504
+Stack[52]:	ffe8d524	@	ffe8d508
+Stack[53]:	 804a018	@	ffe8d50c
+Stack[54]:	 804822c	@	ffe8d510
+Stack[55]:	f76e8000	@	ffe8d514
+Stack[56]:	       0	@	ffe8d518
+Stack[57]:	       0	@	ffe8d51c
+Stack[58]:	       0	@	ffe8d520
+Stack[59]:	d85fd87c	@	ffe8d524
+Stack[60]:	a302bc6d	@	ffe8d528
+Stack[61]:	       0	@	ffe8d52c
+Stack[62]:	       0	@	ffe8d530
+Stack[63]:	       0	@	ffe8d534
+Stack[64]:	       4	@	ffe8d538
+Stack[65]:	 8048350	@	ffe8d53c
+Stack[66]:	       0	@	ffe8d540
+Stack[67]:	f7726500	@	ffe8d544
+Stack[68]:	f7557999	@	ffe8d548
+Stack[69]:	f7733000	@	ffe8d54c
+Stack[70]:	       4	@	ffe8d550
+Stack[71]:	 8048350	@	ffe8d554
+Stack[72]:	       0	@	ffe8d558
+Stack[73]:	 8048371	@	ffe8d55c
+Stack[74]:	 804844d	@	ffe8d560
+Stack[75]:	       4	@	ffe8d564
+Stack[76]:	ffe8d584	@	ffe8d568
+Stack[77]:	 8048700	@	ffe8d56c
+Stack[78]:	 8048770	@	ffe8d570
+Stack[79]:	f7721180	@	ffe8d574
+Stack[80]:	ffe8d57c	@	ffe8d578
+Stack[81]:	      1c	@	ffe8d57c
+Stack[82]:	       4	@	ffe8d580
+Stack[83]:	ffe8f3fd	@	ffe8d584
+Stack[84]:	ffe8f405	@	ffe8d588
+Stack[85]:	ffe8f409	@	ffe8d58c
+Stack[86]:	ffe8f40d	@	ffe8d590
+Stack[87]:	       0	@	ffe8d594
+Stack[88]:	ffe8f413	@	ffe8d598
+Stack[89]:	ffe8f41e	@	ffe8d59c
+Stack[90]:	ffe8f430	@	ffe8d5a0
+Stack[91]:	ffe8f443	@	ffe8d5a4
+Stack[92]:	ffe8f459	@	ffe8d5a8
+Stack[93]:	ffe8f48e	@	ffe8d5ac
+Stack[94]:	ffe8f49f	@	ffe8d5b0
+Stack[95]:	ffe8f4af	@	ffe8d5b4
+Stack[96]:	ffe8f4ba	@	ffe8d5b8
+Stack[97]:	ffe8f50b	@	ffe8d5bc
+Stack[98]:	ffe8f523	@	ffe8d5c0
+Stack[99]:	ffe8f535	@	ffe8d5c4
+Stack[100]:	ffe8f569	@	ffe8d5c8
+Stack[101]:	ffe8f58a	@	ffe8d5cc
+Stack[102]:	ffe8f594	@	ffe8d5d0
+Stack[103]:	ffe8f5a8	@	ffe8d5d4
+Stack[104]:	ffe8fac9	@	ffe8d5d8
+Stack[105]:	ffe8faf9	@	ffe8d5dc
+Stack[106]:	ffe8fb2e	@	ffe8d5e0
+Stack[107]:	ffe8fb3e	@	ffe8d5e4
+Stack[108]:	ffe8fbc4	@	ffe8d5e8
+Stack[109]:	ffe8fbf3	@	ffe8d5ec
+Stack[110]:	ffe8fc07	@	ffe8d5f0
+Stack[111]:	ffe8fc20	@	ffe8d5f4
+Stack[112]:	ffe8fc7e	@	ffe8d5f8
+Stack[113]:	ffe8fc99	@	ffe8d5fc
+Stack[114]:	ffe8fcc7	@	ffe8d600
+Stack[115]:	ffe8fcd8	@	ffe8d604
+Stack[116]:	ffe8fd10	@	ffe8d608
+Stack[117]:	ffe8fd24	@	ffe8d60c
+Stack[118]:	ffe8fd3f	@	ffe8d610
+Stack[119]:	ffe8fd56	@	ffe8d614
+Stack[120]:	ffe8fd61	@	ffe8d618
+Stack[121]:	ffe8fd70	@	ffe8d61c
+Stack[122]:	ffe8fd78	@	ffe8d620
+Stack[123]:	ffe8fda4	@	ffe8d624
+Stack[124]:	ffe8fdb1	@	ffe8d628
+Stack[125]:	ffe8fdce	@	ffe8d62c
+Stack[126]:	ffe8fe30	@	ffe8d630
+Stack[127]:	ffe8fe91	@	ffe8d634
+exit B
+exit A
+exit main
