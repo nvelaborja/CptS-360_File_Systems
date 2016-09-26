@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <fcntl.h>
 #include <ext2fs/ext2_fs.h>   // NOTE: Ubuntu users MAY NEED "ext2_fs.h"
 #include <libgen.h>
@@ -17,6 +18,7 @@ INODE *ip;
 DIR   *dp; 
 
 #define BLOCK_SIZE     1024
+#define INO_PER_BLOCK     8
 
 // Block number of EXT2 FS on FD
 #define SUPERBLOCK        1
@@ -29,6 +31,7 @@ DIR   *dp;
 // Default dir and regulsr file modes
 #define DIR_MODE    0040777
 #define FILE_MODE   0100644
+#define SYM_MODE    0120777
 #define SUPER_MAGIC  0xEF53
 #define SUPER_USER        0
 
@@ -46,6 +49,15 @@ DIR   *dp;
 
 // Mount status
 #define BUSY              1
+
+// Define colors for output
+#define RED     "\x1b[31m"
+#define GREEN   "\x1b[32m"
+#define YELLOW  "\x1b[33m"
+#define BLUE    "\x1b[34m"
+#define MAGENTA "\x1b[35m"
+#define CYAN    "\x1b[36m"
+#define RESET   "\x1b[0m"
 
 // Open File Table
 typedef struct oft{

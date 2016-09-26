@@ -2,13 +2,20 @@
 #include "util.c"
 #include "commands.c"
 
+/**********************  prototypes ***************************/
+
+int mountroot();
+int init();
+int findCmd(char *command);
+int displayRunning();
+
 /************************ globals *****************************/
 MINODE *root; 
-char pathname[128], parameter[128], *name[128], cwdname[128];
+char pathname[128], parameter[128], *name[128], cwdname[128], parentPth[128];
 //char names[128][256];
 
 int  nnames;
-char *rootdev = "disk", *slash = "/", *dot = ".";
+char *rootdev = "mydisk", *slash = "/", *dot = ".";
 int iblock;
 int dev;
 
@@ -17,13 +24,21 @@ MOUNT  mounttab[NMOUNT];
 PROC   proc[NPROC], *running;
 OFT    oft[NOFT];
 
+typedef void (*func)();
+
 char names[64][64];
-int fd, imap, bmap;
+int fd, imap, bmap, numTokens, isPath, isParameter;
 int ninodes, nblocks, nfreeInodes, nfreeBlocks, numTokens;
 char *cmd[] = {"mkdir", "cd", "pwd", "ls", "mount", "umount", "creat", "rmdir", 
       "rm", "open", "close", "read", "write", "cat", "cp", "mv", "pfd", "lseek", 
-      "rewind", "mystat", "pm", "menu", "access", "chmod", "chown", "cs", "fork", 
+      "rewind", "stat", "pm", "menu", "access", "chmod", "chown", "cs", "fork", 
       "ps", "kill", "quit", "touch", "sync", "link", "unlink", "symlink"}; // List of commands accepted by this simulation 
+
+func fpointers[] = {make_dir, change_dir, pwd, list_dir, mount, umount, creat_file, rmdir, 
+      rm_file, open_file, close_file, read_file, write_file, cat_file, cp_file, mv_file, pfd, lseek_file, 
+      rewind_file, mystat, pm, menu, access_file, chmod_file, chown_file, cs, do_fork, 
+      do_ps, do_kill, quit, do_touch, sync, link, unlink, symlink};
+
 char *t1 = "xwrxwrxwr-------";
 char *t2 = "----------------";
 
@@ -32,7 +47,7 @@ MOUNT *getmountp();
 int DEBUG=0;
 int nproc=0;
 
-mountroot()   /* mount root file system */
+int mountroot() 
 {
   int i, ino, fd, dev;
   MOUNT *mp;
@@ -42,10 +57,10 @@ mountroot()   /* mount root file system */
   char line[64], buf[BLOCK_SIZE], *rootdev;
   int ninodes, nblocks, ifree, bfree;
 
-  printf("enter rootdev name (RETURN for disk) : ");
+  printf("enter rootdev name (RETURN for mydisk) : ");
   gets(line);
 
-  rootdev = "disk";
+  rootdev = "mydisk";
 
   if (line[0] != 0)
      rootdev = line;
@@ -93,71 +108,61 @@ mountroot()   /* mount root file system */
   printf("bmap=%d  ",   gp->bg_block_bitmap);
   printf("imap=%d  ",   gp->bg_inode_bitmap);
   printf("iblock=%d\n", gp->bg_inode_table);  
-
-
-  /***** call iget(), which inc the Minode's refCount ****/
+  bmap = gp->bg_block_bitmap;
+  imap = gp->bg_inode_bitmap;
+  iblock = gp->bg_inode_table;
 
   root = iget(dev, 2);          /* get root inode */
   mp->mounted_inode = root;
   root->mountptr = mp;
 
   printf("mount : %s  mounted on / \n", rootdev);
-  printf("nblocks=%d  bfree=%d   ninodes=%d  ifree=%d\n",
-	  nblocks, bfree, ninodes, ifree);
+  printf("nblocks=%d  bfree=%d   ninodes=%d  ifree=%d\n", nblocks, bfree, ninodes, ifree);
   printf("Root Info: dev - %d   ino- %d   refC - %d   dirty - %d  mounted - %d   INODE.size - %d\n", root->dev, root->ino, root->refCount, root->dirty, root->mounted, root->INODE.i_size);
 
 
   return(0);
 } 
 
-init()
+int init()
 {
   int i, j;
   PROC *p;
 
   for (i=0; i<NMINODES; i++)
-      minode[i].refCount = 0;
+    minode[i].refCount = 0;
 
   for (i=0; i<NMOUNT; i++)
-      mounttab[i].busy = 0;
+    mounttab[i].busy = 0;
 
-  for (i=0; i<NPROC; i++){
-      proc[i].status = FREE;
-      for (j=0; j<NFD; j++)
-          proc[i].fd[j] = 0;
-      proc[i].next = &proc[i+1];
+  for (i=0; i<NPROC; i++)
+  {
+    proc[i].status = FREE;
+    for (j=0; j<NFD; j++)
+      proc[i].fd[j] = 0;
+    proc[i].next = &proc[i+1];
   }
 
   for (i=0; i<NOFT; i++)
-      oft[i].refCount = 0;
+    oft[i].refCount = 0;
 
   printf("mounting root\n");
-    mountroot();
+  mountroot();
   printf("mounted root\n");
-
   printf("creating P0, P1\n");
-  p = running = &proc[0];
-  p->status = BUSY;
-  p->uid = 0; 
-  p->pid = p->ppid = p->gid = 0;
-  p->parent = p->sibling = p;
-  p->child = 0;
-  p->cwd = root;
-  p->cwd->refCount++;
 
-  p = &proc[1];
-  p->next = &proc[0];
-  p->status = BUSY;
-  p->uid = 2; 
-  p->pid = 1;
-  p->ppid = p->gid = 0;
-  p->cwd = root;
-  p->cwd->refCount++;
+  p = running = &proc[0]; p->status = BUSY; p->uid = 0;  p->pid = p->ppid = p->gid = 0;
+  p->parent = p->sibling = p; p->child = 0; p->cwd = root; p->cwd->refCount++;
+
+  p = &proc[1]; p->next = &proc[0]; p->status = BUSY; p->uid = 2;  p->pid = 1; 
+  p->ppid = p->gid = 0; p->cwd = root; p->cwd->refCount++;
   
   nproc = 2;
+
+  return 1;
 }
 
-main(int argc, char *argv[ ]) 
+int main(int argc, char *argv[ ]) 
 {
   int i,cmd; 
   char line[128], cname[64];
@@ -167,74 +172,53 @@ main(int argc, char *argv[ ])
         DEBUG = 1;
   }
 
+  printf(RED "*************************************************************************************************\n");
+  printf(RESET "*************************************************************************************************\n");
+  printf(BLUE "*************************************************************************************************\n" RESET);
+
   init();
 
   while(1){
-      printf("P%d running: ", running->pid);
+      if (DEBUG) printf(YELLOW"P%d running: \n"RESET, running->pid);
     
       /* set the strings to 0 */
       memset(pathname, 0, 64);
       memset(parameter,0, 64);
+      isPath = 0;
+      isParameter = 0;
 
-      printf("input command : ");
+      displayRunning();
+      displayMINODES();
+
+      if (DEBUG) printf(YELLOW "Root ino: %d\n" RESET, root->ino);
+      if (DEBUG) printf(YELLOW "CWD  ino: %d\n" RESET, running->cwd->ino);
+
+      printf(CYAN "\ninput command : " RESET);
+      //pwd();
+      printf(CYAN "> "RESET);
       gets(line);
       if (line[0]==0) continue;
 
       sscanf(line, "%s %s %64c", cname, pathname, parameter);
+      if (DEBUG) printf(YELLOW"cname: %s, pathname: %s, parameter: %s\n"RESET, cname, pathname, parameter);
+
+      if (strlen(pathname) != 0) isPath = 1;
+      if (strlen(parameter) != 0) isParameter = 1;
 
       cmd = findCmd(cname);
-      switch(cmd){
-           case 0 : make_dir();               break;
-           case 1 : change_dir();             break;
-           case 2 : pwd(running->cwd);        break;
-           case 3 : list_dir();               break;
-           case 4 : mount();                  break;
-           case 5 : umount(pathname);         break;
-           case 6 : creat_file();             break;
-           case 7 : rmdir();                  break;
-           case 8 : rm_file();                break;
-           case 9 : open_file();              break;
-           case 10: close_file();             break;
 
-           case 11: read_file();              break;
-           case 12: write_file();             break;
-           case 13: cat_file();               break;
-
-           case 14: cp_file();                break;
-           case 15: mv_file();                break;
-
-           case 16: pfd();                    break;
-           case 17: lseek_file();             break;
-           case 18: rewind_file();            break;      
-           case 19: mystat();                 break;
-
-           case 20: pm();                     break;
-
-           case 21: menu();                   break;
-
-           case 22: access_file();            break;
-           case 23: chmod_file();             break;
-           case 24: chown_file();             break;
-
-           case 25: cs();                     break;
-           case 26: do_fork();                break;
-           case 27: do_ps();                  break;
-           case 28: do_kill();                break;
-
-           case 29: quit();                   break; 
-           case 30: do_touch();               break;
-
-           case 31: sync();                   break;
-           case 32: link(); break;
-           case 33: unlink(); break;
-           case 34: symlink(); break;
-           default: printf("invalid command\n");
-                    break;
+      if (cmd == -1) 
+      {
+        printf(RED"Invalid Command.\n"RESET);
+        continue;
       }
+      
+      fpointers[cmd]();
   }
-} /* end main */
 
-// NOTE: you MUST use a function pointer table
+  return 1;
+}
+
 int findCmd(char *command)
 {
   int i = 0;
@@ -249,6 +233,22 @@ int findCmd(char *command)
   return -1;
 }
 
+int displayRunning()
+{
+  if (!DEBUG) return;
 
+  printf(YELLOW ": RUNNING PROCESS :\n");
+  printf("\tuid: %d\n", running->uid);
+  printf("\tpid: %d\n", running->pid);
+  printf("\tppid: %d\n", running->ppid);
+  printf("\tgid: %d\n", running->gid);
+  printf("\tstatus: %d\n", running->status);
+  printf("\tcwd: dev - %d  ino - %d\n", running->cwd->dev, running->cwd->ino);
+  if (running->next) printf("\t Has *next.\n");
+  if (running->child) printf("\t Has *child.\n");
+  if (running->parent) printf("\t Has *parent.\n");
+  if (running->sibling) printf("\t Has *sibling.\n");
+  printf("\n" RESET);
 
-
+  return 1;
+}
